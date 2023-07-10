@@ -1,7 +1,7 @@
-# protobuf
-# transformers==4.30.2
-# cpm_kernels
-# torch>=1.10
+protobuf
+transformers==4.30.2
+cpm_kernels
+torch>=1.10
 # gradio
 # mdtex2html
 # sentencepiece
@@ -9,7 +9,7 @@
 
 fastapi~=0.100.0
 pydantic==1.10.7
-python-dotenv
-uvicorn
-redis
+python-dotenv==1.0.0
+uvicorn==0.22.0
+redis==4.6.0
 
