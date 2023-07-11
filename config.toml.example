@@ -1,0 +1,7 @@
+[models]
+  [models.llm."chatglm2-6b"]
+    type = "chatglm"
+    path = "./model" # path to model
+
+[auth]
+  tokens = ["token1",'token2']
