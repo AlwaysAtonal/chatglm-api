@@ -53,11 +53,6 @@ def main():
             from chatglm import init_chatglm
             context.tokenizer, context.model = init_chatglm(
                 llm['path'], args.device, args.gpus)
-        elif llm['type'] == 'phoenix':
-            print(f">> Use phoenix llm model {llm['path']}")
-            from phoenix import init_phoenix
-            context.tokenizer, context.model = init_phoenix(
-                llm['path'], args.device, args.gpus)
         else:
             print(f"Unsupported LLM model type {llm['type']}")
             sys.exit(1)
