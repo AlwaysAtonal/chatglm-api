@@ -11,8 +11,6 @@ pyngrok
 toml
 # for notebook
 nest-asyncio
-# only need by embeddings model
-text2vec
 
 # for multi-gpu
 accelerate
