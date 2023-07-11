@@ -1,12 +1,9 @@
 from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
 
-from ...libs.chatglm import ChatGLM_6B
 from ...libs.token import get_token_header
 from .types import RequestBody
 from .conversion import conversionRequest, conversionResponse, conversionResponseStream
-
-bot = ChatGLM_6B();
 
 router = APIRouter(
     prefix="/openai/v1",

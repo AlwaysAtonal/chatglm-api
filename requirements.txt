@@ -4,8 +4,8 @@ cpm_kernels
 torch>=1.10
 # gradio
 # mdtex2html
-# sentencepiece
-# accelerate
+sentencepiece
+accelerate
 
 fastapi~=0.100.0
 pydantic==1.10.7

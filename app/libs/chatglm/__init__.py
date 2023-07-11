@@ -1,6 +1,6 @@
-from transformers import AutoTokenizer, AutoModel
 from .types import ChatGLMRequest
 from ..config import env
+from .utils import init_chatglm
 
 def verification(request: ChatGLMRequest):
     '''避免出现 None 值的情况'''
@@ -11,17 +11,11 @@ def verification(request: ChatGLMRequest):
 
 class ChatGLM_6B:
     def __init__(self):
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            env.model_path, 
-            trust_remote_code=True
+        self.tokenizer, self.model = init_chatglm(
+            env.model_path,
+            env.devices,
+            env.gpus
         )
-
-        self.model = AutoModel.from_pretrained(
-            env.model_path, 
-            trust_remote_code=True
-        ).half().cuda()
-
-        self.model.eval()
 
     def __call__(self):
         return self
@@ -56,3 +50,5 @@ class ChatGLM_6B:
                 yield data
             except:
                 continue
+
+bot = ChatGLM_6B()

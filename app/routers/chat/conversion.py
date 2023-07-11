@@ -1,11 +1,9 @@
 from .types import RequestBody, ResponseBody, Role, Message, List
 
-from ...libs.chatglm import ChatGLMRequest, ChatGLM_6B
+from ...libs.chatglm import ChatGLMRequest, bot
 import json
 import calendar
 import time
-
-bot = ChatGLM_6B()
 
 def extractPrompts(messages: List[Message]):
     '''从 gpt 请求体格式的 messages 字段中提取所有 prompt'''
