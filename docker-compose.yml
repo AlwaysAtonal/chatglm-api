@@ -20,7 +20,7 @@ services:
     container_name: chatglm-api
     hostname: chatglm-api
     ports:
-    - 8001:8000
+    - 8000:8000
     volumes:
     - ./.env:/chatglm-api/.env
     - /opt/chatglm/model:/model
