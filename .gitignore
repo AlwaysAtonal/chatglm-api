@@ -1,5 +1,7 @@
+.env
 .http
 THUDM
+redis
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
