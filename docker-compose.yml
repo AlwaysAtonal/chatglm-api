@@ -36,7 +36,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl -s -I http://127.0.0.1:8000/docs | grep 'HTTP/2 200'",
+          "curl -s -I http://127.0.0.1:8000/docs | grep '200 OK'",
         ]
       interval: 30s
       timeout: 60s
