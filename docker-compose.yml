@@ -24,7 +24,7 @@ services:
     volumes:
     - ./.env:/chatglm-api/.env
     - /opt/chatglm/model:/model
-    command: uvicorn app:api --reload --host 0.0.0.0 --port 8000
+    command: uvicorn app:api --reload --host 0.0.0.0 --port 8000 --log-config log.json
     deploy:
       resources:
         reservations:

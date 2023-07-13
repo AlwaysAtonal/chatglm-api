@@ -4,6 +4,7 @@ WORKDIR /chatglm-api
 
 ADD ./app /chatglm-api/app
 ADD ./requirements.txt /chatglm-api/requirements.txt
+ADD ./log.json /chatglm-api/log.json
 
 RUN sed -i 's@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list \
     && apt-get update \
