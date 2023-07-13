@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   redis:
-    image: redis:5.0.3
+    image: redis
     restart: always
     container_name: chatglm-api-redis
     hostname: chatglm-api-redis
@@ -25,7 +25,7 @@ services:
     volumes:
     - ./.env:/chatglm-api/.env
     - ./model:/model
-    command: uvicorn app:api --reload --host 0.0.0.0 --port 8000 --log-config log.json
+    command: uvicorn app:api --host 0.0.0.0 --port 8000 --log-config log.json
     deploy:
       resources:
         reservations:
