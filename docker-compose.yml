@@ -14,8 +14,9 @@ services:
     - TZ=Asia/Shanghai
     command: redis-server --bind 0.0.0.0 --requirepass 123 --appendonly yes --appendfsync always
 
-  chatglm2-6b-openai:
-    image: chatglm2:unick-api-beta-0.0.5
+  chatglm-api:
+    image: chatglm2:openai-api-beta-0.0.1
+    build: .
     restart: always
     container_name: chatglm-api
     hostname: chatglm-api
