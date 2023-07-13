@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
+FROM python:3.10.9
 
 WORKDIR /chatglm-api
 
@@ -6,7 +6,7 @@ ADD ./app /chatglm-api/app
 ADD ./requirements.txt /chatglm-api/requirements.txt
 ADD ./log.json /chatglm-api/log.json
 
-RUN sed -i 's@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list \
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && apt-get update \
     && apt-get install python3 python3-pip curl iputils-ping -y \
     && apt-get autoclean && rm -rf /var/lib/apt/lists/*
