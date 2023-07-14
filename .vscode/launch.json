@@ -11,7 +11,9 @@
             "module": "uvicorn",
             "args": [
                 "app:api",
-                "--reload --host 0.0.0.0 --port 8001 --log-config log.json"
+                "--reload",
+                "--port", "8000",
+                "--log-config", "log.json"
             ],
             "jinja": true,
             "justMyCode": true
