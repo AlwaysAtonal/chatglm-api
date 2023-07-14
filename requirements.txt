@@ -1,0 +1,15 @@
+protobuf
+transformers==4.30.2
+cpm_kernels
+torch>=1.10
+# gradio
+# mdtex2html
+sentencepiece
+accelerate
+
+fastapi~=0.100.0
+pydantic==1.10.7
+python-dotenv==1.0.0
+uvicorn==0.22.0
+redis==4.6.0
+bcrypt==4.0.1

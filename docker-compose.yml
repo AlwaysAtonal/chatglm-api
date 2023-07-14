@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis
+    restart: always
+    container_name: chatglm-api-redis
+    hostname: chatglm-api-redis
+    volumes:
+    - ./redis:/data
+    - /etc/timezone:/etc/timezone
+    - /etc/localtime:/etc/localtime
+    environment:
+    - TZ=Asia/Shanghai
+    command: redis-server --bind 0.0.0.0 --requirepass 123 --appendonly yes --appendfsync always
+
+  chatglm-api:
+    image: chatglm2:openai-api-beta-0.0.1
+    build: .
+    restart: always
+    container_name: chatglm-api
+    hostname: chatglm-api
+    ports:
+    - 8000:8000
+    volumes:
+    - ./.env:/chatglm-api/.env
+    - ./model:/model
+    command: uvicorn app:api --host 0.0.0.0 --port 8000 --log-config log.json
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ["0","1","2","3"]
+            capabilities: [gpu]
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -s -I http://127.0.0.1:8000/docs | grep '200 OK'",
+        ]
+      interval: 30s
+      timeout: 60s
+      retries: 180
