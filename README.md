@@ -38,18 +38,11 @@ python3
 
 ```python
 # 添加用户key
-from app.libs.redis import client as redis
-import bcrypt
 
-# user_id 只支持 字母、数字、下划线
-user_id = 'demo'
-user_pass = "your-private-password"
+# user_id 尽量使用 数字、字母、下划线 的组合
+user_id = 'your_user_id'
+user_passwd = 'your-private-password'
 
-hash_pass = bcrypt.hashpw(user_pass.encode(), bcrypt.gensalt(rounds=10))
-
-redis.set(user_id, hash_pass)
-print(f'key: sk-{user_id}-{user_pass}')
-
-# 验证是否成功
-bcrypt.checkpw(user_pass.encode(), redis.get(user_id).encode())
+from scripts.user import client as redis
+redis.add_user(user_id, user_passwd)
 ```
